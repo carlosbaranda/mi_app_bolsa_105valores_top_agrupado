@@ -42,7 +42,8 @@ seleccion_mercados = st.multiselect("Selecciona uno o varios mercados:", mercado
 st.subheader("🔢 Número máximo de valores a mostrar")
 max_valores = st.slider("Selecciona cuántos valores quieres mostrar (máx 100):", min_value=5, max_value=100, value=35)
 
-df = df[df["Mercado"].isin(seleccion_mercados)].head(max_valores)
+df = df[df["Mercado"].isin(seleccion_mercados)]
+df_vista = df.head(max_valores)
 
 
 
