@@ -38,7 +38,11 @@ st.subheader("🌍 Filtrar por mercado")
 mercados_disponibles = df["Mercado"].dropna().unique().tolist()
 seleccion_mercados = st.multiselect("Selecciona uno o varios mercados:", mercados_disponibles, default=mercados_disponibles)
 
-df = df[df["Mercado"].isin(seleccion_mercados)]
+# --- Selección de número máximo de valores ---
+st.subheader("🔢 Número máximo de valores a mostrar")
+max_valores = st.slider("Selecciona cuántos valores quieres mostrar (máx 100):", min_value=5, max_value=100, value=35)
+
+df = df[df["Mercado"].isin(seleccion_mercados)].head(max_valores)
 
 
 
